@@ -1,0 +1,12 @@
+services:
+
+  livox:
+    image: livox-test
+    restart: unless-stopped
+    network_mode: host
+    ipc: host
+    environment:
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID:-0}
+      - RMW_IMPLEMENTATION=${RMW_IMPLEMENTATION:-rmw_fastrtps_cpp}
+    command: >
+      ros2 launch livox_ros_driver2 msg_MID360_launch.py
